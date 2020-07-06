@@ -5,7 +5,6 @@ stages:
 - stage: SingleStage
   jobs:
   - job: "One"
-    dependsOn: 'Two'
     pool: server
     steps:   
     
