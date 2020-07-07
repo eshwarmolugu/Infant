@@ -24,6 +24,7 @@ stages:
           # Write your commands here
           echo 'Hello world'
   - job: 'Four'
+    dependsOn: 'Three'
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -31,6 +32,7 @@ stages:
         architecture: 'x64'
   - job: "One"
     pool: server
+    dependsOn: 'Four'
     steps:   
     - task: InvokeRESTAPI@1
       inputs:
