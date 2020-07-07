@@ -4,25 +4,6 @@ name: $(Date:yyyyMMdd)$(Rev:.r)
 stages:
 - stage: SingleStage
   jobs:
-  - job: "One"
-    pool: server
-    steps:   
-    
-    - task: InvokeRESTAPI@1
-      inputs:
-        connectionType: 'connectedServiceName'
-        serviceConnection: 'ChangeControl_con'
-        method: 'POST'
-        body: |
-          {
-              "buildNumber": "$(build.buildId)",
-              "isMultiBranch": "true",
-              "branchName": "$(build.sourceBranchName)"
-          }
-        waitForCompletion: 'true'
-    - task: Delay@1
-      inputs:
-        delayForMinutes: '0'
   - job: "Two"
     steps:
     - task: Bash@3
@@ -33,6 +14,7 @@ stages:
           echo 'Hello world ' 
 - stage: Build
   jobs:
+ 
   - job: 'Three'
     steps:
     - task: Bash@3
@@ -48,3 +30,22 @@ stages:
       inputs:
         versionSpec: '3.6'
         architecture: 'x64'
+  - job: "One"
+    pool: server
+    dependsOn: 'Four'
+    steps:   
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'ChangeControl_con'
+        method: 'POST'
+        body: |
+          {
+              "buildNumber": "$(build.buildId)",
+              "isMultiBranch": "true",
+              "branchName": "$(build.sourceBranchName)"
+          }
+        waitForCompletion: 'true'
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '0'
