@@ -15,6 +15,9 @@ public class Test {
 		//Tue May 17 18:30:00 IST 2016
 		//Tue May 17 20:15:00 IST 2016
 		
+		int x;
+		int res = 100/x;
+		
 		System.out.println("Hello GitHub");
 		System.out.println("Testing GitHub");
 	}
