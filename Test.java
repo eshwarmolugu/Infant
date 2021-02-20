@@ -16,12 +16,13 @@ public class Test {
 		//Tue May 17 20:15:00 IST 2016
 		
 		int x;
-		int res = 100/x;
-		if(x > 1){
+		if(10>5)
+		if(x > 1)
 			System.out.println("Hello GitHub");
-		System.out.println("Testing GitHub");
+		else
+			System.out.println("Testing GitHub");
 
-		}
+		
 			}
 
 }
