@@ -17,9 +17,11 @@ public class Test {
 		
 		int x;
 		int res = 100/x;
-		
-		System.out.println("Hello GitHub");
+		if(x > 1){
+			System.out.println("Hello GitHub");
 		System.out.println("Testing GitHub");
-	}
+
+		}
+			}
 
 }
